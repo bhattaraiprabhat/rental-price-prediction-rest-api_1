@@ -5,13 +5,13 @@ import pandas as pd  # For data manipulation
 from flask import Flask, request, jsonify  # For creating the Flask API
 
 # Initialize the Flask application
-rental_price_predictor_api = Flask("Airbnb Rental Price Predictor")
+rental_price_predictor_api_1 = Flask("Airbnb Rental Price Predictor")
 
 # Load the trained machine learning model
 model = joblib.load("rental_price_prediction_model_v1_0.joblib")
 
 # Define a route for the home page (GET request)
-@rental_price_predictor_api.get('/')
+@rental_price_predictor_api_1.get('/')
 def home():
     """
     This function handles GET requests to the root URL ('/') of the API.
@@ -20,7 +20,7 @@ def home():
     return "Welcome to the Airbnb Rental Price Prediction API!"
 
 # Define an endpoint for single property prediction (POST request)
-@rental_price_predictor_api.post('/v1/rental')
+@rental_price_predictor_api_1.post('/v1/rental')
 def predict_rental_price():
     """
     This function handles POST requests to the '/v1/rental' endpoint.
@@ -62,7 +62,7 @@ def predict_rental_price():
 
 
 # Define an endpoint for batch prediction (POST request)
-@rental_price_predictor_api.post('/v1/rentalbatch')
+@rental_price_predictor_api_1.post('/v1/rentalbatch')
 def predict_rental_price_batch():
     """
     This function handles POST requests to the '/v1/rentalbatch' endpoint.
@@ -90,4 +90,4 @@ def predict_rental_price_batch():
 
 # Run the Flask application in debug mode if this script is executed directly
 if __name__ == '__main__':
-    rental_price_predictor_api.run(debug=True)
+    rental_price_predictor_api_1.run(debug=True)
